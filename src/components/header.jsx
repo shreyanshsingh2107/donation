@@ -18,10 +18,12 @@ const Header = () => {
           />
         </a>
         <nav
-          className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 tablet:static flex flex-col justify-center items-center tablet:space-x-6 tablet:p-0 tablet:shadow-none overflow-hidden tablet:hidden ${
-            isMenuOpen ? "open-menu" : "close-menu"
-          }`}
-        >
+  className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 
+    tablet:static flex flex-col justify-center items-center tablet:space-x-6 
+    tablet:p-0 tablet:shadow-none tablet:hidden transition-all duration-500 
+    ${isMenuOpen ? "open-menu" : "hidden"}`}
+>
+
           <a
             href="/"
             className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
