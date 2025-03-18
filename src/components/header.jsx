@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
+import DonationModal from "./donationModal";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <header className="px-5 tablet:px-[30px] py-2.5 z-40 bg-white">
       <div className="flex items-center justify-between max-w-[1440px] mx-auto">
@@ -17,7 +18,7 @@ const Header = () => {
           />
         </a>
         <nav
-          className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 tablet:static flex flex-col justify-center items-center tablet:space-x-6 tablet:p-0 tablet:shadow-none overflow-hidden ${
+          className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 tablet:static flex flex-col justify-center items-center tablet:space-x-6 tablet:p-0 tablet:shadow-none overflow-hidden tablet:hidden ${
             isMenuOpen ? "open-menu" : "close-menu"
           }`}
         >
@@ -47,6 +48,10 @@ const Header = () => {
           </a>
           <a
             href="/"
+            onClick={(e) => {
+                e.preventDefault(); 
+                setIsModalOpen(true);
+              }}
             className="block tablet:hidden mt-2 bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
           >
             DONATE
@@ -56,10 +61,15 @@ const Header = () => {
         <div className="flex items-center">
           <a
             href="/"
+            onClick={(e) => {
+                e.preventDefault(); 
+                setIsModalOpen(true);
+              }}
             className="hidden tablet:block bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
           >
             DONATE
           </a>
+          <DonationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
           <button
             className="w-nav-button tablet:hidden flex flex-col justify-center items-center w-10 h-10 focus-visible:outline-none cursor-pointer"
