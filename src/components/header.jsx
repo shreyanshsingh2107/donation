@@ -18,12 +18,53 @@ const Header = () => {
           />
         </a>
         <nav
-  className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 
-    tablet:static flex flex-col justify-center items-center tablet:space-x-6 
-    tablet:p-0 tablet:shadow-none tablet:hidden transition-all duration-500 
+          className={`absolute top-[60px] left-0 w-full bg-black text-white shadow-md p-4 
+    desktop:static flex flex-col justify-center items-center desktop:space-x-6 
+    desktop:p-0 desktop:shadow-none desktop:hidden transition-all duration-500 
     ${isMenuOpen ? "open-menu" : "hidden"}`}
->
+        >
+          <a
+            href="/"
+            className="block py-2 px-4 hover:bg-gray-200 desktop:hover:bg-transparent"
+          >
+            OUR MISSION
+          </a>
+          <a
+            href="/"
+            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
+          >
+            PROJECTS
+          </a>
+          <a
+            href="/"
+            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
+          >
+            TEAM
+          </a>
+          <a
+            href="/"
+            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
+          >
+            GET INVOLVED
+          </a>
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsModalOpen(true);
+            }}
+            className="block tablet:hidden mt-2 bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
+          >
+            DONATE
+          </a>
+        </nav>
 
+        <nav
+          className={`w-full bg-white text-black shadow-md p-4 
+    desktop:static desktop:flex  justify-center items-center tablet:space-x-6 
+    desktop:p-0 tablet:shadow-none hidden transition-all duration-500 
+    `}
+        >
           <a
             href="/"
             className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
@@ -51,27 +92,29 @@ const Header = () => {
           <a
             href="/"
             onClick={(e) => {
-                e.preventDefault(); 
-                setIsModalOpen(true);
-              }}
+              e.preventDefault();
+              setIsModalOpen(true);
+            }}
             className="block tablet:hidden mt-2 bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
           >
             DONATE
           </a>
         </nav>
-
         <div className="flex items-center">
           <a
             href="/"
             onClick={(e) => {
-                e.preventDefault(); 
-                setIsModalOpen(true);
-              }}
+              e.preventDefault();
+              setIsModalOpen(true);
+            }}
             className="hidden tablet:block bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
           >
             DONATE
           </a>
-          <DonationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <DonationModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
 
           <button
             className="w-nav-button tablet:hidden flex flex-col justify-center items-center w-10 h-10 focus-visible:outline-none cursor-pointer"
