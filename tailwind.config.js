@@ -7,7 +7,11 @@ module.exports = {
       desktop: "1024px",
       // => @media (min-width: 1024) { ... }
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
