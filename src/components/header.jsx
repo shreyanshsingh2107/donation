@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import DonationModal from "./donationModal";
+import {HEADER_DATA} from "../assets/data";
+import logo from "../assets/logo 2.png"
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <header className="px-5 tablet:px-[30px] py-2.5 z-40 bg-white">
+    <header className="px-5 tablet:px-[30px] py-2.5 z-40 bg-black sticky top-0 z-[999999">
       <div className="flex items-center justify-between max-w-[1440px] mx-auto">
         <a
           href="/"
           className="outline-none float-left text-[#333] no-underline relative"
         >
           <img
-            src="https://cdn.prod.website-files.com/646ddb3266c5a1a9cf624c2d/647a0797692a8751499cc2ab_empower.svg"
+            // src={HEADER_DATA?.logo?.src}
+            src={logo}
             loading="lazy"
-            alt="logo"
-            className="h-[30px]"
+            alt={HEADER_DATA?.logo?.alt}
+            // className="h-[30px]"
+            className="w-[120px]"
           />
         </a>
         <nav
@@ -23,82 +28,44 @@ const Header = () => {
     desktop:p-0 desktop:shadow-none desktop:hidden transition-all duration-500 
     ${isMenuOpen ? "open-menu" : "hidden"}`}
         >
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 desktop:hover:bg-transparent"
-          >
-            OUR MISSION
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            PROJECTS
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            TEAM
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            GET INVOLVED
-          </a>
+          {HEADER_DATA?.menuItems.map((item,index)=>(
+             <a
+             key={index}
+             href={item?.url}
+             className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
+           >
+             {item?.text}
+           </a>
+          ))}
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               setIsModalOpen(true);
             }}
-            className="block tablet:hidden mt-2 bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
+            className="block tablet:hidden mt-2 bg-[#ff3232] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-red-500/50 transition-all duration-[800ms] ease-in-out "
           >
             DONATE
           </a>
         </nav>
 
         <nav
-          className={`w-full bg-white text-black shadow-md p-4 
+          className={`w-full bg-black text-white shadow-md p-4 
     desktop:static desktop:flex  justify-center items-center tablet:space-x-6 
     desktop:p-0 tablet:shadow-none hidden transition-all duration-500 
     `}
         >
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            OUR MISSION
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            PROJECTS
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            TEAM
-          </a>
-          <a
-            href="/"
-            className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
-          >
-            GET INVOLVED
-          </a>
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsModalOpen(true);
-            }}
-            className="block tablet:hidden mt-2 bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
-          >
-            DONATE
-          </a>
+        {HEADER_DATA?.menuItems.map((item,index)=>(
+             <a
+             key={index}
+             href={item?.url}
+             className="block py-2 px-4 hover:bg-gray-200 tablet:hover:bg-transparent"
+           >
+             {item?.text}
+           </a>
+          ))}
+          
+      
         </nav>
         <div className="flex items-center">
           <a
@@ -107,7 +74,7 @@ const Header = () => {
               e.preventDefault();
               setIsModalOpen(true);
             }}
-            className="hidden tablet:block bg-[#ff00d4] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-[rgba(255,0,213,0.5)] transition-all duration-[800ms] ease-in-out "
+            className="hidden tablet:block bg-[#ff3232] tracking-[2px] uppercase rounded p-[12px_40px] font-bold text-white hover:bg-red-500/50 transition-all duration-[800ms] ease-in-out "
           >
             DONATE
           </a>
@@ -127,19 +94,19 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <span
-              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ${
                 isMenuOpen ? "rotate-45 " : "-translate-y-2"
               }`}
             ></span>
 
             <span
-              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ${
                 isMenuOpen ? "opacity-0" : "opacity-100"
               }`}
             ></span>
 
             <span
-              className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`absolute w-6 h-0.5 bg-white transition-all duration-300 ${
                 isMenuOpen ? "-rotate-45" : "translate-y-2"
               }`}
             ></span>
